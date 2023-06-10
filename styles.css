@@ -1,0 +1,17 @@
+body > div > div
+{
+    display: inline;
+}
+
+body
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 6vw;
+    margin: 1em;
+}
+
+button
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 9vw;
+}

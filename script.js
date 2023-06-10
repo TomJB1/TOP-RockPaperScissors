@@ -1,6 +1,18 @@
+
+const computerDiv = document.getElementById("compChoice");
+const resultDiv = document.getElementById("outcome");
+
+const scoreDiv = document.getElementById("score");
+const computerScoreDiv = document.getElementById("compScore");
+
+const winnerDiv = document.getElementById("winner");
+
+let score = 0;
+let computerScore = 0;
+
 function computerRandomChoice()
 {
-    rnumb = Math.floor(Math.random() * 4);
+    rnumb = Math.floor(Math.random() * 3);
     
     switch(rnumb)
     {
@@ -88,3 +100,37 @@ function evaluateWinner(player, computer)
     return outcome
 }
 
+function play(e)
+{
+    player = e.target.getAttribute('data-choice');
+    if(!player) return
+    computer = computerRandomChoice()
+    result = evaluateWinner(player, computer);
+    switch(result)
+    {
+        case "win":
+            score++;
+        break;
+        case "lose":
+            computerScore++;
+        break;
+    }
+    console.log(`E: ${e};  Player: ${player};  Computer: ${computer};  Result: ${result}`)
+
+    resultDiv.innerText = result;
+    computerDiv.innerText = computer;
+
+    scoreDiv.innerText = score;
+    computerScoreDiv.innerText = computerScore;
+    if(score > 4)
+    {
+        winnerDiv.innerText = "You Win"
+    }
+
+    if(computerScore > 4)
+    {
+        winnerDiv.innerText = "You Lose. I win."
+    }
+}
+
+window.addEventListener('click', play)
